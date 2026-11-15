@@ -1,0 +1,249 @@
+{
+  "schema_version": "1.1",
+  "dataset_name": "independent_bdpp_development_evaluation",
+  "description": "Twelve corpus-grounded development questions for evaluating semantic retrieval over the independent fictional Batch Data Processing Platform.",
+  "source_specification": "data/corpus",
+  "retrieval_depths": [
+    1,
+    3
+  ],
+  "questions": [
+    {
+      "question_id": "BDPP-001",
+      "question_type": "direct",
+      "question": "What processing stages does an inventory batch pass through?",
+      "expected_documents": [
+        "01-platform-overview.md"
+      ],
+      "expected_evidence_roles": [
+        "platform_context"
+      ],
+      "expected_chunks": [
+        "platform_overview::003"
+      ],
+      "gold_evidence": [
+        "Ingestion, validation, transformation, versioning, verification, and diagnostics."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    },
+    {
+      "question_id": "BDPP-002",
+      "question_type": "cross_component",
+      "question": "When are rejected records excluded, and under what condition is a dataset version candidate created?",
+      "expected_documents": [
+        "01-platform-overview.md",
+        "02-ingestion-validation.md"
+      ],
+      "expected_evidence_roles": [
+        "platform_context",
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "platform_overview::003",
+        "ingestion_validation::006"
+      ],
+      "gold_evidence": [
+        "Rejected records do not proceed to transformation; at least one transformed record is required for version creation."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    },
+    {
+      "question_id": "BDPP-003",
+      "question_type": "competing_failure_stage",
+      "question": "What happens when a submitted batch uses an unsupported schema version?",
+      "expected_documents": [
+        "02-ingestion-validation.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "ingestion_validation::004",
+        "ingestion_validation::005"
+      ],
+      "gold_evidence": [
+        "Unsupported schema versions violate batch-level validation; the entire batch is rejected."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    },
+    {
+      "question_id": "BDPP-004",
+      "question_type": "direct",
+      "question": "Can valid inventory records proceed when another record in the same eligible batch is rejected?",
+      "expected_documents": [
+        "02-ingestion-validation.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "ingestion_validation::006"
+      ],
+      "gold_evidence": [
+        "Valid records remain eligible for transformation; invalid records are rejected individually."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    },
+    {
+      "question_id": "BDPP-005",
+      "question_type": "direct",
+      "question": "How are accepted inventory timestamps normalized to UTC?",
+      "expected_documents": [
+        "03-transformation.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "transformation::003"
+      ],
+      "gold_evidence": [
+        "Timestamp normalization converts explicit offsets to UTC while preserving the represented instant."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    },
+    {
+      "question_id": "BDPP-006",
+      "question_type": "direct",
+      "question": "How is available inventory quantity calculated for different condition codes?",
+      "expected_documents": [
+        "03-transformation.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "transformation::004"
+      ],
+      "gold_evidence": [
+        "AVAILABLE retains quantity; MAINTENANCE and RETIRED produce zero available quantity."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    },
+    {
+      "question_id": "BDPP-007",
+      "question_type": "cross_component",
+      "question": "Can a partially accepted batch create a dataset version, and which records are included?",
+      "expected_documents": [
+        "02-ingestion-validation.md",
+        "04-dataset-versioning.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "ingestion_validation::006",
+        "dataset_versioning::001"
+      ],
+      "gold_evidence": [
+        "A partially accepted batch can create one version when at least one accepted record is transformed; rejected records are excluded."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    },
+    {
+      "question_id": "BDPP-008",
+      "question_type": "direct",
+      "question": "Does a new dataset version automatically contain records from previously processed batches?",
+      "expected_documents": [
+        "04-dataset-versioning.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "dataset_versioning::006"
+      ],
+      "gold_evidence": [
+        "Dataset versions are per-batch and non-cumulative."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    },
+    {
+      "question_id": "BDPP-009",
+      "question_type": "direct",
+      "question": "What happens when a dataset version's declared record count differs from its actual transformed record count?",
+      "expected_documents": [
+        "05-output-verification.md"
+      ],
+      "expected_evidence_roles": [
+        "verification_requirements"
+      ],
+      "expected_chunks": [
+        "output_verification::003"
+      ],
+      "gold_evidence": [
+        "A record-count mismatch fails the applicable output verification requirement."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    },
+    {
+      "question_id": "BDPP-010",
+      "question_type": "direct",
+      "question": "What correspondence and ordering requirements apply between accepted input records and transformed output records?",
+      "expected_documents": [
+        "05-output-verification.md"
+      ],
+      "expected_evidence_roles": [
+        "verification_requirements"
+      ],
+      "expected_chunks": [
+        "output_verification::005"
+      ],
+      "gold_evidence": [
+        "Accepted records must correspond one-to-one with transformed outputs, with no missing, duplicated, or rejected records; accepted-record order is preserved."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    },
+    {
+      "question_id": "BDPP-011",
+      "question_type": "outcome_distinction",
+      "question": "Can PARTIALLY_ACCEPTED and VERSION_VERIFIED both describe the processing history of one batch?",
+      "expected_documents": [
+        "06-diagnostics.md"
+      ],
+      "expected_evidence_roles": [
+        "diagnostic_requirements"
+      ],
+      "expected_chunks": [
+        "diagnostics::001"
+      ],
+      "gold_evidence": [
+        "PARTIALLY_ACCEPTED describes input validation; VERSION_VERIFIED describes dataset verification. Both categories may apply."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    },
+    {
+      "question_id": "BDPP-012",
+      "question_type": "cross_component",
+      "question": "When verification fails, how do dataset status and diagnostic reporting differ?",
+      "expected_documents": [
+        "05-output-verification.md",
+        "06-diagnostics.md"
+      ],
+      "expected_evidence_roles": [
+        "verification_requirements",
+        "diagnostic_requirements"
+      ],
+      "expected_chunks": [
+        "output_verification::006",
+        "diagnostics::006"
+      ],
+      "gold_evidence": [
+        "FAILED_VERIFICATION is the dataset version status; VERSION_FAILED is the diagnostic reporting category."
+      ],
+      "competing_documents": [],
+      "evaluation_notes": "Development evaluation question grounded in the independent synthetic BDPP corpus. Expected chunks identify the annotated evidence."
+    }
+  ]
+}

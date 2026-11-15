@@ -1,0 +1,487 @@
+{
+  "evaluation_id": "independent_bdpp_development_v2_first_run",
+  "experiment": "Step 19C.10N.6",
+  "record_type": "direct_real_model_execution",
+  "dataset_name": "independent_bdpp_development_evaluation_v2",
+  "dataset_schema_version": "1.1",
+  "model": "BAAI/bge-small-en-v1.5",
+  "device": "cpu",
+  "retrieval_method": "cosine_similarity",
+  "retrieval_depth": 3,
+  "corpus_document_count": 6,
+  "corpus_chunk_count": 47,
+  "question_count": 12,
+  "input_sha256": {
+    "data/evaluation/bdpp_retrieval_questions.json": "4e8e1bb9ed9fa732b9dcdab21a677555c5f8a4122c62bbb515f937c9cf133448",
+    "data/evaluation/bdpp_retrieval_questions_v2.json": "affba62b62294eda0d4cea2da24571d6c1ed20438c66d1d39b430951aaca69e6",
+    "data/evaluation/results/bdpp_development_baseline_2026-11-12.json": "26bf055712d984fa0d206adac1b0bc220ae55004424e642d89fc2deb1002d3cc"
+  },
+  "corpus_sha256": {
+    "data/corpus/01-platform-overview.md": "8d711b942437e265c982e71be942b689d37826b42d91934261b4eed1d6178a3e",
+    "data/corpus/02-ingestion-validation.md": "71a7082595e018a1d0578423b968082591ee1cd3e4394667711c12807545d9c2",
+    "data/corpus/03-transformation.md": "9ef8662511e8bb02effde243e525913e03c2c403fb62666fd141c4a776f74992",
+    "data/corpus/04-dataset-versioning.md": "8cb5063e78e1f28d738b9e9405859852cd30491954e411110392bafa2adf364a",
+    "data/corpus/05-output-verification.md": "642e7e579768daedf3f8fdbe6299dddc9ecfc9505922dc7825c504968d5fbcfa",
+    "data/corpus/06-diagnostics.md": "a380c4cb811d237498d3876466fb72fd5dff2d2e6d8170feaf6bcb7911072ca3"
+  },
+  "aggregate_metrics": {
+    "Document Hit@1": 0.75,
+    "Document Hit@3": 0.8333333333333334,
+    "Mean Document Recall@3": 0.75,
+    "Mean Reciprocal Rank": 0.7777777777777778,
+    "Complete Document Accuracy@3": 0.6666666666666666,
+    "Evidence Role Accuracy@3": 0.75,
+    "Chunk Hit Rate@3": 0.8333333333333334,
+    "Mean Chunk Recall@3": 0.7083333333333334,
+    "Complete Chunk Accuracy@3": 0.5833333333333334
+  },
+  "questions": [
+    {
+      "question_id": "BDPP-001",
+      "question": "What processing stages does an inventory batch pass through?",
+      "expected_documents": [
+        "01-platform-overview.md"
+      ],
+      "expected_evidence_roles": [
+        "platform_context"
+      ],
+      "expected_chunks": [
+        "platform_overview::003"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "platform_overview::003",
+          "document": "01-platform-overview.md",
+          "evidence_role": "platform_context",
+          "cosine_similarity": 0.7587608098983765
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ingestion_validation::000",
+          "document": "02-ingestion-validation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.7580008506774902
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ingestion_validation::001",
+          "document": "02-ingestion-validation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.7557006478309631
+        }
+      ]
+    },
+    {
+      "question_id": "BDPP-002",
+      "question": "When are rejected records excluded, and under what condition is a dataset version candidate created?",
+      "expected_documents": [
+        "02-ingestion-validation.md",
+        "04-dataset-versioning.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "ingestion_validation::006",
+        "dataset_versioning::001"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "dataset_versioning::001",
+          "document": "04-dataset-versioning.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.8304775953292847
+        },
+        {
+          "rank": 2,
+          "chunk_id": "output_verification::001",
+          "document": "05-output-verification.md",
+          "evidence_role": "verification_requirements",
+          "cosine_similarity": 0.7984803318977356
+        },
+        {
+          "rank": 3,
+          "chunk_id": "diagnostics::005",
+          "document": "06-diagnostics.md",
+          "evidence_role": "diagnostic_requirements",
+          "cosine_similarity": 0.7965201139450073
+        }
+      ]
+    },
+    {
+      "question_id": "BDPP-003",
+      "question": "What happens when a submitted batch uses an unsupported schema version?",
+      "expected_documents": [
+        "02-ingestion-validation.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "ingestion_validation::004",
+        "ingestion_validation::005"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "diagnostics::002",
+          "document": "06-diagnostics.md",
+          "evidence_role": "diagnostic_requirements",
+          "cosine_similarity": 0.7657674551010132
+        },
+        {
+          "rank": 2,
+          "chunk_id": "platform_overview::002",
+          "document": "01-platform-overview.md",
+          "evidence_role": "platform_context",
+          "cosine_similarity": 0.7582296133041382
+        },
+        {
+          "rank": 3,
+          "chunk_id": "platform_overview::003",
+          "document": "01-platform-overview.md",
+          "evidence_role": "platform_context",
+          "cosine_similarity": 0.7519948482513428
+        }
+      ]
+    },
+    {
+      "question_id": "BDPP-004",
+      "question": "Can valid inventory records proceed when another record in the same eligible batch is rejected?",
+      "expected_documents": [
+        "02-ingestion-validation.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "ingestion_validation::006"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "ingestion_validation::006",
+          "document": "02-ingestion-validation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.8417829871177673
+        },
+        {
+          "rank": 2,
+          "chunk_id": "diagnostics::003",
+          "document": "06-diagnostics.md",
+          "evidence_role": "diagnostic_requirements",
+          "cosine_similarity": 0.8225392699241638
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ingestion_validation::005",
+          "document": "02-ingestion-validation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.8201053738594055
+        }
+      ]
+    },
+    {
+      "question_id": "BDPP-005",
+      "question": "How are accepted inventory timestamps normalized to UTC?",
+      "expected_documents": [
+        "03-transformation.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "transformation::003"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "transformation::003",
+          "document": "03-transformation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.8781325221061707
+        },
+        {
+          "rank": 2,
+          "chunk_id": "output_verification::004",
+          "document": "05-output-verification.md",
+          "evidence_role": "verification_requirements",
+          "cosine_similarity": 0.8212490081787109
+        },
+        {
+          "rank": 3,
+          "chunk_id": "transformation::002",
+          "document": "03-transformation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.7210114598274231
+        }
+      ]
+    },
+    {
+      "question_id": "BDPP-006",
+      "question": "How is available inventory quantity calculated for different condition codes?",
+      "expected_documents": [
+        "03-transformation.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "transformation::004"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "transformation::004",
+          "document": "03-transformation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.7819516658782959
+        },
+        {
+          "rank": 2,
+          "chunk_id": "platform_overview::001",
+          "document": "01-platform-overview.md",
+          "evidence_role": "platform_context",
+          "cosine_similarity": 0.7694832682609558
+        },
+        {
+          "rank": 3,
+          "chunk_id": "ingestion_validation::002",
+          "document": "02-ingestion-validation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.7685703635215759
+        }
+      ]
+    },
+    {
+      "question_id": "BDPP-007",
+      "question": "According to Schema Validation, what makes a batch partially accepted? According to Dataset Versioning, when can that batch create a dataset version, and which records are included?",
+      "expected_documents": [
+        "02-ingestion-validation.md",
+        "04-dataset-versioning.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "ingestion_validation::006",
+        "dataset_versioning::001"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "ingestion_validation::005",
+          "document": "02-ingestion-validation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.8404930830001831
+        },
+        {
+          "rank": 2,
+          "chunk_id": "dataset_versioning::001",
+          "document": "04-dataset-versioning.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.836081326007843
+        },
+        {
+          "rank": 3,
+          "chunk_id": "output_verification::001",
+          "document": "05-output-verification.md",
+          "evidence_role": "verification_requirements",
+          "cosine_similarity": 0.8356913924217224
+        }
+      ]
+    },
+    {
+      "question_id": "BDPP-008",
+      "question": "Does a new dataset version automatically contain records from previously processed batches?",
+      "expected_documents": [
+        "04-dataset-versioning.md"
+      ],
+      "expected_evidence_roles": [
+        "processing_requirements"
+      ],
+      "expected_chunks": [
+        "dataset_versioning::006"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "dataset_versioning::006",
+          "document": "04-dataset-versioning.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.8128344416618347
+        },
+        {
+          "rank": 2,
+          "chunk_id": "output_verification::001",
+          "document": "05-output-verification.md",
+          "evidence_role": "verification_requirements",
+          "cosine_similarity": 0.7814345359802246
+        },
+        {
+          "rank": 3,
+          "chunk_id": "dataset_versioning::001",
+          "document": "04-dataset-versioning.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.7788180112838745
+        }
+      ]
+    },
+    {
+      "question_id": "BDPP-009",
+      "question": "What happens when a dataset version's declared record count differs from its actual transformed record count?",
+      "expected_documents": [
+        "05-output-verification.md"
+      ],
+      "expected_evidence_roles": [
+        "verification_requirements"
+      ],
+      "expected_chunks": [
+        "output_verification::003"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "output_verification::003",
+          "document": "05-output-verification.md",
+          "evidence_role": "verification_requirements",
+          "cosine_similarity": 0.7988349199295044
+        },
+        {
+          "rank": 2,
+          "chunk_id": "dataset_versioning::003",
+          "document": "04-dataset-versioning.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.785305380821228
+        },
+        {
+          "rank": 3,
+          "chunk_id": "output_verification::007",
+          "document": "05-output-verification.md",
+          "evidence_role": "verification_requirements",
+          "cosine_similarity": 0.7852979302406311
+        }
+      ]
+    },
+    {
+      "question_id": "BDPP-010",
+      "question": "What correspondence and ordering requirements apply between accepted input records and transformed output records?",
+      "expected_documents": [
+        "05-output-verification.md"
+      ],
+      "expected_evidence_roles": [
+        "verification_requirements"
+      ],
+      "expected_chunks": [
+        "output_verification::005"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "transformation::001",
+          "document": "03-transformation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.8284786939620972
+        },
+        {
+          "rank": 2,
+          "chunk_id": "transformation::006",
+          "document": "03-transformation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.8199625611305237
+        },
+        {
+          "rank": 3,
+          "chunk_id": "output_verification::005",
+          "document": "05-output-verification.md",
+          "evidence_role": "verification_requirements",
+          "cosine_similarity": 0.803056538105011
+        }
+      ]
+    },
+    {
+      "question_id": "BDPP-011",
+      "question": "Can PARTIALLY_ACCEPTED and VERSION_VERIFIED both describe the processing history of one batch?",
+      "expected_documents": [
+        "06-diagnostics.md"
+      ],
+      "expected_evidence_roles": [
+        "diagnostic_requirements"
+      ],
+      "expected_chunks": [
+        "diagnostics::001"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "output_verification::001",
+          "document": "05-output-verification.md",
+          "evidence_role": "verification_requirements",
+          "cosine_similarity": 0.7879353165626526
+        },
+        {
+          "rank": 2,
+          "chunk_id": "ingestion_validation::006",
+          "document": "02-ingestion-validation.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.7719683647155762
+        },
+        {
+          "rank": 3,
+          "chunk_id": "output_verification::005",
+          "document": "05-output-verification.md",
+          "evidence_role": "verification_requirements",
+          "cosine_similarity": 0.7606273889541626
+        }
+      ]
+    },
+    {
+      "question_id": "BDPP-012",
+      "question": "When verification fails, how do dataset status and diagnostic reporting differ?",
+      "expected_documents": [
+        "05-output-verification.md",
+        "06-diagnostics.md"
+      ],
+      "expected_evidence_roles": [
+        "verification_requirements",
+        "diagnostic_requirements"
+      ],
+      "expected_chunks": [
+        "output_verification::006",
+        "diagnostics::006"
+      ],
+      "retrieved_top3": [
+        {
+          "rank": 1,
+          "chunk_id": "diagnostics::006",
+          "document": "06-diagnostics.md",
+          "evidence_role": "diagnostic_requirements",
+          "cosine_similarity": 0.8772788047790527
+        },
+        {
+          "rank": 2,
+          "chunk_id": "dataset_versioning::005",
+          "document": "04-dataset-versioning.md",
+          "evidence_role": "processing_requirements",
+          "cosine_similarity": 0.8556925654411316
+        },
+        {
+          "rank": 3,
+          "chunk_id": "diagnostics::005",
+          "document": "06-diagnostics.md",
+          "evidence_role": "diagnostic_requirements",
+          "cosine_similarity": 0.8505285382270813
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Corpus-grounded development evaluation, not blinded.",
+    "V2 contains revised gold annotations and question wording.",
+    "V1 and V2 metric differences are not directly attributable to retrieval improvements.",
+    "Answer sufficiency is not automatically evaluated.",
+    "Embedding model package versions and exact model revision are not recorded."
+  ]
+}
