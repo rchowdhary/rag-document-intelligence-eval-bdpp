@@ -6,7 +6,7 @@ This project investigates how effectively embedding-based retrieval identifies d
 
 The public-edition development work builds on reusable engineering components from an earlier private project while replacing its experimental corpus and questions with newly developed synthetic materials.
 
-**Status:** Independent public edition under development. Final licensing, intellectual-property, security, provenance, and publication-readiness reviews remain pending.
+**Status:** Independent public edition in private release preparation. Internal licensing, intellectual-property, security, provenance, and publication-readiness reviews have been completed for the approved 31-file release candidate. Public publication remains on hold pending separate explicit authorization.
 
 ## 1. Project Overview
 
